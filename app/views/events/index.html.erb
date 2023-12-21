@@ -1,0 +1,23 @@
+<h1>Events#index</h1>
+<p>Here's all of our events, heres @events:</p>
+<p><%= @events %></p>
+<p># of events = <%= @events.count %></p>
+<%= button_to "Create new event", new_event_path, method: :get %>
+
+<table>
+  <thead>
+    <th>ID</th>
+    <th>Event date</th>
+    <th>Event Location</th>
+  </thead>
+  <tbody>
+    <%= @events.each do |e| %>
+    <tr>
+      <td><%= e.id %></td>
+      <td><%= e.date %></td>
+      <td><%= e.location %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
