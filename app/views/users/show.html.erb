@@ -1,0 +1,18 @@
+<h1>Users#show</h1>
+<p>Current User Email: <%= current_user.email  %></p>
+<p>Current User Inspect: <%= current_user.inspect  %></p>
+<p>Current User Session Inspect: <%= user_session.inspect  %></p>
+
+<table>
+  <thead>
+    <td>Event Date</td>
+    <td>Event Location</td>
+  </thead>
+  <tbody>
+  <%= current_user.events.each do |event| %>
+    <td><%= event.date %></td>
+    <td><%= event.location %></td>
+  <% end %>
+  </tbody>
+  
+</table>

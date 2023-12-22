@@ -9,6 +9,7 @@
     <th>ID</th>
     <th>Event date</th>
     <th>Event Location</th>
+    <th>Event Creator Email</th>
   </thead>
   <tbody>
     <%= @events.each do |e| %>
@@ -16,6 +17,7 @@
       <td><%= e.id %></td>
       <td><%= e.date %></td>
       <td><%= e.location %></td>
+      <td><%= e.user.email %></td>
     </tr>
     <% end %>
   </tbody>

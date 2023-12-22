@@ -6,11 +6,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = current_user.events.build(event_params)
     if @event.save
       redirect_to events_path, notice: "sucessfully saved record"
     else
-      render new_event_path, notice: "failed to save record"
+      render new_event_path, status: :unprocessable_entity, notice: "failed to save record"
     end
   end
 
@@ -20,7 +20,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:date, :location, :id)
+    params.require(:event).permit(:date, :location, :id, :user_id)
   end
 
 end
