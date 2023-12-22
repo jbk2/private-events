@@ -15,14 +15,14 @@
  */
 
  
- table {
-   /* display: block; */
-   table-layout: fixed;
-   border: 2px solid black;
-   border-radius: 5px;
-   background-color: rgb(225, 236, 232);
-   margin: 20px;
-   /* border-collapse: collapse; */
+table {
+  /* display: block; */
+  table-layout: fixed;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgb(225, 236, 232);
+  margin: 20px;
+  /* border-collapse: collapse; */
 }
   
 tr {

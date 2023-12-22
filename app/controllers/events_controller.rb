@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create] 
+  
   def new
     @event = Event.new
   end
@@ -8,7 +10,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to events_path, notice: "sucessfully saved record"
     else
-      render events_new_path, notice: "failed to save record"
+      render new_event_path, notice: "failed to save record"
     end
   end
 

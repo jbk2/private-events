@@ -1,5 +1,6 @@
 <h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<p>Create a new event</p>
+<%= button_to "Events list", events_path, method: :get %>
 
 <%= form_with model: @event do |f| %>
     <%= f.label :date, "Event Date" %>
