@@ -1,24 +1,7 @@
-<h1>Events#index</h1>
-<p>Here's all of our events, heres @events:</p>
-<p><%= @events %></p>
-<p># of events = <%= @events.count %></p>
-<%= button_to "Create new event", new_event_path, method: :get %>
+<h1>Here's all events you've been invited to:</h1>
 
-<table>
-  <thead>
-    <th>ID</th>
-    <th>Event date</th>
-    <th>Event Location</th>
-    <th>Event Creator Email</th>
-  </thead>
-  <tbody>
-    <%= @events.each do |e| %>
-    <tr>
-      <td><%= e.id %></td>
-      <td><%= e.date %></td>
-      <td><%= e.location %></td>
-      <td><%= e.user.email %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<p># of events = <%= @attending_events.count %></p>
+
+<%= render partial: 'shared/attending_events' %>
+
+<%= button_to "Create new event", new_event_path, method: :get %>

@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   
   def show
-    @users_events = current_user.events
-
+    @created_events = current_user.created_events
   end
 end

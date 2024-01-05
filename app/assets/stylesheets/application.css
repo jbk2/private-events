@@ -14,7 +14,16 @@
  *= require_self
  */
 
- 
+
+/* .flash.hide {
+  visibility: hidden;
+  transition: visibility 0s linear;
+} */
+
+/* * {
+  border: solid 1px red;
+} */
+
 table {
   /* display: block; */
   table-layout: fixed;
@@ -22,15 +31,36 @@ table {
   border-radius: 5px;
   background-color: rgb(225, 236, 232);
   margin: 20px;
-  /* border-collapse: collapse; */
-}
-  
-tr {
-  /* border: 1px solid black; */
 }
 
-td  {
-  /* display: block; */
+td {
   border: 1px solid black;
   padding: 10px;
+}
+
+nav {
+  display: flex;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links > * {
+  margin: 5px;
+}
+
+.user-nav-links {
+  display: flex;
+}
+
+.user-nav-links > * {
+  margin: 5px;
+}
+
+.flash {
+  display: flex;
+}
+.flash p {
+  margin: 0;
 }
