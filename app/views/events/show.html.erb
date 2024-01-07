@@ -1,31 +1,13 @@
-<table>
-  <caption>Event id; <%= @event.id %></caption>
-  <thead>
-    <th>ID</th>
-    <th>Event date</th>
-    <th>Event Location</th>
-    <th>Event Creator Email</th>
-    <th>Event Attendees</th>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @event.id %></td>
-      <td><%= @event.date %></td>
-      <td><%= @event.location %></td>
-      <td><%= @event.creator.email %></td>
-      <td>
-        <% @event.attendees.each do |a| %>
-          <%= a.id.to_s + ',' + a.email + ', ' %>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<%= render partial: "event" %>
 
-<h2>Not yet Invited attendees:</h2>
-<%= form_with model: @event, url: invite_users_event_path(@event), method: :post do |f| %>
-  <%= f.collection_select :attendee, @not_yet_invited_users, :id, :email, {}, { multiple: true } %>
-  <%= f.submit 'Invite Users'%>
+<% if @event.creator == current_user %>
+  <% if @not_yet_invited_users.count.>(0) %>
+    <%= render partial: "invite_users" %>
+  <% else %>
+    <h4>All users have been invited already</h4>
+  <% end %>  
 <% end %>
+  
+
   
 

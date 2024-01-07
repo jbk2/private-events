@@ -7,7 +7,7 @@
 #  attending_event_id :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  accepted           :integer          default(0), not null
+#  accepted           :integer          default("pending"), not null
 #
 class EventAttendance < ApplicationRecord
   belongs_to :event_attendee, class_name: 'User', foreign_key: 'event_attendee_id'

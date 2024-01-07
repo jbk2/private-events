@@ -10,12 +10,20 @@
 #  creator_id :string           not null
 #
 class Event < ApplicationRecord
-  
-  
-  # therefore rails makes @event.creator works
   belongs_to :creator, class_name: 'User'
 
   has_many :event_attendances, foreign_key: :attending_event_id
   has_many :attendees, through: :event_attendances, source: :event_attendee
 
+  def invite_users(user_ids)
+    user_ids.each do |user_id|
+      user = User.find(user_id)
+      event_attendances.create(event_attendee_id: user.id) unless attendees.include?(user)
+    end
+  end
+
+  def invite_user(id)
+    user = User.find(id)
+    event_attendances.create(event_attendee_id: user.id) unless attendees.include?(user)
+  end
 end

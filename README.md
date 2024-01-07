@@ -20,8 +20,5 @@
 ---
 ## ToDo list:
 
-- Split users events table on events#show into past & future events 
-- event#show view - remove invite form if every user already invited
 - event#show view - enable checkbox to update on state change not submit button
-- show flash notices for only a short time
 - Tidy up views

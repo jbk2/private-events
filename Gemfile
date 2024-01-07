@@ -75,3 +75,5 @@ end
 gem "devise", "~> 4.9"
 
 gem 'pry-byebug'
+
+gem "tailwindcss-rails", "~> 2.2"

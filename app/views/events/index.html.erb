@@ -1,7 +1,17 @@
 <h1>Here's all events you've been invited to:</h1>
 
-<p># of events = <%= @attending_events.count %></p>
-
-<%= render partial: 'shared/attending_events' %>
+<% if @attending_events.empty? %>
+  <h4>You haven't been invited to any events yet</h4>
+  <p># of events = <%= @attending_events.count %></p>
+<% else %>
+  <% if @past_events %>
+    <h4>Past events</h4>
+    <%= render partial: 'shared/attending_events', locals: { events: @past_events} %>
+  <% end %>  
+  <% if @future_events %>
+    <h4>Future events</h4>
+    <%= render partial: 'shared/attending_events', locals: { events: @future_events} %>    
+  <% end %>
+<% end %>
 
 <%= button_to "Create new event", new_event_path, method: :get %>

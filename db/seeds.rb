@@ -15,34 +15,70 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 
-10.times do |i|
-  User.create(
-    email: "test#{i+1}@test.com",
-    password: 'password'
-  )
+
+class ManualTestData  
+
+  def initialize
+    @european_cities = [
+    "Paris", "Berlin", "London", "Madrid", "Rome",
+    "Athens", "Amsterdam", "Vienna", "Prague", "Lisbon",
+    "Barcelona", "Warsaw", "Budapest", "Oslo", "Stockholm",
+    "Dublin", "Brussels", "Copenhagen", "Helsinki", "Zurich",
+    "Bratislava", "Ljubljana", "Luxembourg", "Reykjavik", "Dubrovnik",
+    "Edinburgh", "Geneva", "Munich", "Milan", "Krakow",
+    "Venice", "Bucharest", "Belgrade", "Sofia", "Hamburg",
+    "Frankfurt", "Cologne", "Marseille", "Barcelona", "Valencia",
+    "Seville", "Granada", "Porto", "Florence", "Naples",
+    "Turin", "Palermo", "Lyon", "Toulouse", "Bilbao"
+    ]
+  end
+
+  def rand_date(start_date, end_date)
+    date_range = (Date.parse(start_date)..Date.parse(end_date)).to_a
+    random_date = date_range[rand(date_range.length)]
+    formatted_random_date = random_date.strftime("%d-%m-%Y")
+    formatted_random_date
+  end
+
+    
+  def create_users(n)
+    n.times do |i|
+      User.create(
+        email: "test#{i+1}@test.com",
+        password: 'password'
+      )
+    end
+  end
+
+
+  def create_events(n)
+    n.times do |i|
+      user = User.order("RANDOM()").first
+      user.created_events.create(
+        date: rand_date("01-01-2023", "01-01-2026"),
+        location: @european_cities[rand(50)]
+      )
+    end
+  end
+
+  def create_invites
+    Event.all.order("RANDOM()").limit(7).each do |e|
+      e.invite_users(6.times.map {rand(1...10)})
+    end
+  end
+
+  def invite_creator
+    Event.includes(:creator).all.each do |e|
+      e.invite_user(e.creator.id)
+    end
+  end
+
 end
 
-
-def rand_date(start_date, end_date)
-  date_range = (Date.parse(start_date)..Date.parse(end_date)).to_a
-  random_date = date_range[rand(date_range.length)]
-  formatted_random_date = random_date.strftime("%d-%m-%Y")
-  formatted_random_date
+if Rails.env.development?
+  seeder = ManualTestData.new
+  seeder.create_users(10) 
+  seeder.create_events(10) 
+  seeder.create_invites
+  seeder.invite_creator
 end
-
-date_array = []
-10.times do
-  date_array << rand_date("01-01-2023", "01-01-2026")
-end
-
-10.times do |i|
-  user = User.order("RANDOM()").first
-  date = date_array.pop
-  user.created_events.create(
-    date: date,
-    location: 'spain'
-    )
-end
-
-# user_1s_created_event1 = user_1.created_events.first
-# user_1s_created_event1.attendees.create(id: user_2.id)

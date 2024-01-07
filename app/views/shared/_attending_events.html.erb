@@ -1,5 +1,5 @@
 <table>
-  <caption>Your attending events</caption>
+  <caption>Your invited events</caption>
   <thead>
     <th>EventID</th>
     <th>Event date</th>
@@ -8,7 +8,8 @@
     <th>Invite accepted Y/N</th>
   </thead>
   <tbody>
-    <% @attending_events.each do |event| %>
+  <% events = local_assigns[:events] %>
+    <% events.each do |event| %>
     <tr>
       <td><%= event.id %></td>
       <td><%= event.date %></td>

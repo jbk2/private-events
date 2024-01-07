@@ -1,0 +1,21 @@
+<table>
+  <caption>Event id; <%= @event.id %></caption>
+  <thead>
+    <th>ID</th>
+    <th>Event date</th>
+    <th>Event Location</th>
+    <th>Event Creator Email</th>
+    <th>Event Attendees</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @event.id %></td>
+      <td><%= @event.date %></td>
+      <td><%= @event.location %></td>
+      <td><%= @event.creator.email %></td>
+      <% @event.attendees.each do |a| %>
+        <td><%= a.id.to_s + ',' + a.email + ', ' %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

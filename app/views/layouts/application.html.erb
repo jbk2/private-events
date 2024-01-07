@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -17,7 +18,7 @@
       <section>
         <div class='user-nav-links'>
           <% if !on_these_paths?([events_path, unauthenticated_root_path, new_user_session_path]) %>
-            <%= link_to "Home page", events_path %>
+            <%= link_to "My invited events", events_path %>
           <% end %>
           <% if user_signed_in? %>
             <%= link_to "Edit Profile", edit_user_registration_path %>
