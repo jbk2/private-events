@@ -5,12 +5,10 @@
   <p># of events = <%= @attending_events.count %></p>
 <% else %>
   <% if @past_events %>
-    <h4>Past events</h4>
-    <%= render partial: 'shared/attending_events', locals: { events: @past_events} %>
+    <%= render partial: 'shared/attending_events', locals: { events: @past_events, caption: "Past events"} %>
   <% end %>  
   <% if @future_events %>
-    <h4>Future events</h4>
-    <%= render partial: 'shared/attending_events', locals: { events: @future_events} %>    
+    <%= render partial: 'shared/attending_events', locals: { events: @future_events, caption: "Future events"} %>    
   <% end %>
 <% end %>
 

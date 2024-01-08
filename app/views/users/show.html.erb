@@ -1,10 +1,4 @@
-<h1>Users#show</h1>
-<p>Current User Email: <%= current_user.email  %></p>
-<p>Current User Inspect: <%= current_user.inspect  %></p>
-<p>Current User Session Inspect: <%= user_session.inspect  %></p>
-
 <%= render partial: 'shared/created_events' %>
-
 <%= button_to "Create new event", new_event_path, method: :get %>
 
 

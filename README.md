@@ -8,6 +8,7 @@
 - This project will require you to model many-to-many relationships and also to be very conscious about your foreign keys and class names (hint: you won’t be able to just rely on Rails’ defaults like you have before).
 
 **Learnings**
+- Futher Devise authentication practice
 - ActiveRecord associations:
   - many to many join tables
   - using m2m join table as its own class & model to store attributes on

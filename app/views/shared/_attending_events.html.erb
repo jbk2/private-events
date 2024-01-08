@@ -1,11 +1,13 @@
 <table>
-  <caption>Your invited events</caption>
+  <% caption = local_assigns[:caption] %>
+  <caption><%= caption %></caption>
   <thead>
     <th>EventID</th>
     <th>Event date</th>
     <th>Event Location</th>
     <th>Event Creator Email</th>
-    <th>Invite accepted Y/N</th>
+    <th>Invite accepted</th>
+    <th>Update invite status </th>
   </thead>
   <tbody>
   <% events = local_assigns[:events] %>
@@ -15,9 +17,9 @@
       <td><%= event.date %></td>
       <td><%= event.location %></td>
       <td><%= event.creator.email %></td>
-      <td><%= event.event_attendances.find_by(event_attendee_id: current_user.id).accepted %></td>
       <td>
-
+        <%= event.event_attendances.find_by(event_attendee_id: current_user.id).accepted %></td>
+      <td>
         <% @event_attendance = event.event_attendances.find_by(event_attendee_id: current_user.id) %>
         <%= form_with model: @event_attendance, url: event_attendance_path(@event_attendance), method: :patch do |form| %>
           <%= form.check_box :accepted, { multiple: false }, :accepted, :pending %>
