@@ -11,20 +11,19 @@
 #
 class Event < ApplicationRecord
   belongs_to :creator, class_name: 'User'
-
   has_many :event_attendances, foreign_key: :attending_event_id, dependent: :destroy
   has_many :attendees, through: :event_attendances, source: :event_attendee
+  
+  # alternative:
+  # after_create lambda { |event| event.invite_user(event.creator.id) }
+  after_create -> (event) { event.invite_user(event.creator.id) } 
 
   scope :in_the_past, -> { where("date < ?", Date.current) }
   scope :in_the_future, -> { where("date > ?", Date.current) }
-
-  
-  # scope :in_the_past, -> { where(:date.past?) }
-
+  # alternative:
   # scope :users_future_events, ->(user_id) {
   #   all.select { |event| event.date.future? && event.creator_id == user_id }
   # }
-
 
   def invite_users(user_ids)
     user_ids.each do |user_id|

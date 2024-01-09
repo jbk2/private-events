@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   def create
     @event = current_user.created_events.build(event_params)
     if @event.save
-      @event.invite_user(@event.creator.id)
+      #@event.invite_user(@event.creator.id) #move this logic into a model after_create callback
       redirect_to event_path(@event.id), notice: "sucessfully saved record"
     else
       render new_event_path, status: :unprocessable_entity, notice: "failed to save record"

@@ -23,5 +23,8 @@
 ---
 ## ToDo list:
 
+- Callbacks - what logic would callbacks be an ideal mechanism for?
+  - done - inviting event_creator to event upon event creation
+  - 
 - Event#show view - enable checkbox to dynamically update on state change, not just submit action button
 - Get more creative with UI design
