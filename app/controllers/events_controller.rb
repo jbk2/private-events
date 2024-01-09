@@ -18,14 +18,32 @@ class EventsController < ApplicationController
 
   def index
     @attending_events = current_user.attending_events
-    @past_events = current_user.attending_events.select { |e| e.date.past? }
-    @future_events = current_user.attending_events.select { |e| e.date.future? }
+    @past_events = current_user.attending_events.in_the_past
+    @future_events = current_user.attending_events.in_the_future
+    # @past_events = current_user.attending_events.select { |e| e.date.past? } # Or this approach without the need for scope
+    # @future_events = current_user.attending_events.select { |e| e.date.future? } # Or this approach without the need for scope
   end
 
   def show
     @event = Event.find(params[:id])
-    @users = User.all
-    @not_yet_invited_users = @users - @event.attendees
+    # @users = User.all
+    @not_yet_invited_users = User.all - @event.attendees
+  end
+  
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update(event_params)
+      redirect_to @event, notice: "Successfully updated event id;#{@event.id}"
+    else
+      render @event, status: :unprocessable_entity, notice: "Failed to update event id #{@event.id}"
+    end
+  end
+
+  def destroy 
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to users_show_path, notice: 'Event was successfully deleted.'
   end
 
   def invite_users

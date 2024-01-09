@@ -9,10 +9,9 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :events, :only => [:new, :create, :index, :show] do
+  resources :events, :only => [:new, :create, :index, :show, :update, :destroy] do
     member do
       post 'invite_users'
-      # patch 'update_attendance'
     end
   end
   

@@ -1,7 +1,7 @@
 <%= field_set_tag "Invite form" do %>
   <%= form_with model: @event, url: invite_users_event_path(@event), method: :post, class: "invite-users-form" do |f| %>
     <%= f.collection_select :attendee_id, @not_yet_invited_users, :id, :email, {}, { multiple: true } %>
-    <%= f.submit 'Invite Users'%>
+    <%= f.submit 'Invite Users', class:"btn-sm"%>
   <% end %>
 <% end %>
   

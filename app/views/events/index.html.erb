@@ -1,4 +1,4 @@
-<h1>Here's all events you've been invited to:</h1>
+<h1 class="">Here's all events you've been invited to:</h1>
 
 <% if @attending_events.empty? %>
   <h4>You haven't been invited to any events yet</h4>
@@ -12,4 +12,4 @@
   <% end %>
 <% end %>
 
-<%= button_to "Create new event", new_event_path, method: :get %>
+<%= button_to "Create new event", new_event_path, method: :get, class: "btn-md" %>

@@ -1,4 +1,8 @@
-<%= render partial: 'shared/created_events' %>
-<%= button_to "Create new event", new_event_path, method: :get %>
+<% if @created_events.empty? %>
+  <h4>You haven't created any events yet</h4>
+  <p># of events = <%= @attending_events&.count %></p>
+<% else %>
+  <%= render partial: 'shared/created_events' %>
+<% end %>  
 
-
+<%= button_to "Create new event", new_event_path, method: :get, class:"btn-md"%>

@@ -72,3 +72,7 @@ nav {
   width: fit-content;
   height: fit-content;
 }
+
+input#event_attendance_accepted {
+  border: 1px solid grey
+}

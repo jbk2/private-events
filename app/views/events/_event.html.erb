@@ -8,14 +8,25 @@
     <th>Event Attendees</th>
   </thead>
   <tbody>
-    <tr>
-      <td><%= @event.id %></td>
-      <td><%= @event.date %></td>
-      <td><%= @event.location %></td>
-      <td><%= @event.creator.email %></td>
-      <% @event.attendees.each do |a| %>
-        <td><%= a.id.to_s + ',' + a.email + ', ' %></td>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+    <%= form_for @event, url: event_path(@event), method: :patch do |f| %>
+      <tr>
+        <td><%= @event.id %></td>
+        <td><%= f.text_field :date, value: @event.date %></td>
+        <td><%= f.text_field :location, value: @event.location %></td>
+        <td><%= @event.creator.email %></td>
+        <td>
+          <% @event.attendees.each do |a| %>
+            <%= a.id.to_s + ',' + a.email + ', ' %>
+          <% end %>
+        </td>
+        <td>
+          <%= f.submit "Update event", class:"btn-sm" %>
+        </td>
+    <% end %>    
+        <td>
+          <%= button_to "Delete event", event_path(@event), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-sm" %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+

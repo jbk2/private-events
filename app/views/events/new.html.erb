@@ -1,13 +1,10 @@
-<h1>Events#new</h1>
-<p>Create a new event</p>
-<%= button_to "Events list", events_path, method: :get %>
-
-<%= form_with model: @event do |f| %>
-    <%= f.label :date, "Event Date" %>
-    <%= f.date_field :date %>
-    <%= f.label :location, "Event location" %>
-    <%= f.text_field :location %>
-    <%#= f.hidden_field :accepted, accepted: 1 %>
-    <%= f.submit %>
+<%= field_set_tag "Create new event" do %>
+	<%= form_with model: @event, class: "block" do |f| %>
+		<%= f.label :date, "Event Date" %>
+		<%= f.date_field :date, class: "mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded" %>
+		<%= f.label :location, "Event location" %>
+		<%= f.text_field :location, class: "mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded" %>
+		<%= f.submit class:"btn-md" %>
+	<% end %>
 <% end %>
   

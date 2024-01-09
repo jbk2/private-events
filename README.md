@@ -21,5 +21,6 @@
 ---
 ## ToDo list:
 
+- Event#show, enable table to edit and delete events
 - event#show view - enable checkbox to update on state change not submit button
 - Tidy up views
