@@ -23,6 +23,5 @@
 ---
 ## ToDo list:
 
-- Event#show, enable table to edit and delete events
-- event#show view - enable checkbox to update on state change not submit button
-- Tidy up views
+- Event#show view - enable checkbox to dynamically update on state change, not just submit action button
+- Get more creative with UI design
