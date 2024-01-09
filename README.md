@@ -16,7 +16,9 @@
   - associated model object management
   - ActiveRecord querying
   - db seeds
-- 
+- Further forms practice
+- Furhter best practice MVC pattern code location
+- Tailwind integration & utility creation
 
 ---
 ## ToDo list:
