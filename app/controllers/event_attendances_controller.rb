@@ -4,7 +4,6 @@ class EventAttendancesController < ApplicationController
 
   def update
     @event_attendance = EventAttendance.find(params[:id])
-    # binding.pry
     if params[:event_attendance][:accepted] == @event_attendance.accepted
       redirect_to events_path, status: :unprocessable_entity, notice: "Already #{@event_attendance.accepted}"
     elsif @event_attendance.update(event_attendance_params)
