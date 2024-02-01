@@ -23,6 +23,7 @@
 ---
 ## ToDo list:
 
+- Build sign up modal for bookings new page. 
 - Callbacks - what logic would callbacks be an ideal mechanism for?
   - done - inviting event_creator to event upon event creation
   - 
